@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase.config';
+import { auth, db } from '../../firebase.config';
+import { useNavigate } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
 
 
 const Login = () => {
+  const Navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -20,14 +23,16 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission, such as sending data to your server
-    console.log('Login Data:', formData);
     try {
       // Sign in with email and password
       const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
       const user = userCredential.user;
       console.log('User:', user);
       // Handle success (e.g., redirect to another page or display a success message)
-      
+      if (user) {
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        Navigate(`/${userDoc.data().role}`);
+      }
       
     } catch (error) {
       console.error('Error during login:', error);

@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom"
+import { TeacherFooter, TeacherHeader } from "../components"
 
 const TeacherLayout = () => {
   return (
     <div>
-        <p>Teacher Header</p>
+        <TeacherHeader />
         <Outlet />
-        <p>Teacher Footer</p>
+        <TeacherFooter /> 
     </div>
   )
 }

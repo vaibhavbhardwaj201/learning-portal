@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase.config';
 import { storeUserData } from '../../api';
+import { useNavigate } from 'react-router-dom';
 
 const countryCodes = [
   { code: '+370', label: 'Lt (+370)' },
@@ -11,6 +12,7 @@ const countryCodes = [
 ];
 
 const Register = () => {
+  const Navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,6 +43,10 @@ const Register = () => {
     // Store user data in Firestore using Cloud Function
     const result = await storeUserData(user, formData);
     console.log('Store user data result:', result);
+    if (result.success) {
+      // Redirect to another page or show a success message
+      Navigate(`/${formData.role}`);
+    }
     
     // Handle success (e.g., redirect to another page or display a success message)
   } catch (error) {

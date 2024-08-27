@@ -34,18 +34,10 @@ exports.storeUserData = onRequest(async (req, res) => {
       };
 
       // check if user already exists in collection if not add user
-      if (role === "student") {
-        const docRef = db.collection("students").doc(decodedToken.uid);
-        const doc = await docRef.get();
-        if (!doc.exists) {
-          await docRef.set(user);
-        }
-      } else if (role === "teacher") {
-        const docRef = db.collection("teachers").doc(decodedToken.uid);
-        const doc = await docRef.get();
-        if (!doc.exists) {
-          await docRef.set(user);
-        }
+      const docRef = db.collection("users").doc(decodedToken.uid);
+      const doc = await docRef.get();
+      if (!doc.exists) {
+        await docRef.set(user);
       }
 
       res.status(200).json({
