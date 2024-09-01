@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom"
+import { StudentFooter, StudentHeader } from "../components"
 
 const StudentLayout = () => {
   return (
     <div>
-        <p>Student Header</p>
+        <StudentHeader />
         <Outlet />
-        <p>Student Footer</p>
+        <StudentFooter />
     </div>
   )
 }

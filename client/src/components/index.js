@@ -4,3 +4,6 @@ export {default as TeacherHeader} from './teacher/TeacherHeader';
 export {default as TeacherFooter} from './teacher/TeacherFooter';
 export {default as CourseList} from './CourseList';
 export {default as StudentList} from './teacher/StudentList';
+export {default as CourseDetail} from './CourseDetail';
+export {default as StudentHeader} from './student/StudentHeader';
+export {default as StudentFooter} from './student/StudentFooter';

@@ -2,8 +2,9 @@ import { Suspense } from 'react'
 import { Routes, Route} from 'react-router-dom'
 import { QueryClient, QueryClientProvider} from 'react-query'
 import { HomeLayout, StudentLayout, TeacherLayout } from '../layouts'
-import { AddCourse, Home, Login, Register, StudentHome, TeacherHome, TeacherProfile, TeacherStudents } from '../pages'
+import { AddCourse, Home, Login, Register, StudentCourses, StudentHome, TeacherHome, TeacherProfile, TeacherStudents } from '../pages'
 import TeacherCourses from '../pages/teacher/TeacherCourses'
+import { CourseDetail } from '../components'
 
 function App() {
   const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ function App() {
           {/* Student layout */}
           <Route path='/student' element={<StudentLayout />}>
             <Route index element={<StudentHome />} />
+            <Route path='courses' element={<StudentCourses />} />
           </Route>
 
           {/* Teacher layout */}
@@ -35,6 +37,7 @@ function App() {
             <Route path='students' element={<TeacherStudents />} />
             <Route path='profile' element={<TeacherProfile />} />
             <Route path='add-course' element={<AddCourse />} />
+            <Route path='courses/:courseId' element={<CourseDetail />} />
           </Route>
         </Routes>
 

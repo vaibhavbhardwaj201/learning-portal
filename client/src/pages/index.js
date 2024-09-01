@@ -7,3 +7,4 @@ export { default as TeacherCourses } from './teacher/TeacherCourses';
 export { default as TeacherStudents } from './teacher/TeacherStudents';
 export { default as TeacherProfile } from './teacher/TeacherProfile';
 export { default as AddCourse } from './teacher/AddCourse';
+export { default as StudentCourses } from './student/StudentCourses';
