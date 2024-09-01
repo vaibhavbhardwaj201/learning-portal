@@ -23,7 +23,7 @@ const TeacherHeader = () => {
 
         {/* Navigation Links */}
         <nav className="flex space-x-4">
-          <Link to="/teacher/home" className="hover:text-gray-300">
+          <Link to="/teacher" className="hover:text-gray-300">
             Home
           </Link>
           <Link to="/teacher/courses" className="hover:text-gray-300">

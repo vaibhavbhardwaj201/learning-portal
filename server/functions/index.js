@@ -1,7 +1,10 @@
 const {onRequest} = require("firebase-functions/v2/https");
 const admin = require("firebase-admin");
+
 const logger = require("firebase-functions/logger");
+
 const cors = require("cors")({origin: true});
+
 
 admin.initializeApp();
 

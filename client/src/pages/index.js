@@ -4,3 +4,6 @@ export { default as TeacherHome } from './teacher/TeacherHome';
 export { default as Login } from './auth/Login';
 export { default as Register } from './auth/Register';
 export { default as TeacherCourses } from './teacher/TeacherCourses';
+export { default as TeacherStudents } from './teacher/TeacherStudents';
+export { default as TeacherProfile } from './teacher/TeacherProfile';
+export { default as AddCourse } from './teacher/AddCourse';

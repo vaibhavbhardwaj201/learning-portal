@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import {CourseList} from '../../components';
-import { db } from '../../firebase.config';
+import { db, auth } from '../../firebase.config';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const TeacherCourses = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-  const teacherId = "TEACHER_UID"; // Replace with actual teacher's UID
+  const teacherId = auth.currentUser.uid;
 
   useEffect(() => {
     const fetchCourses = async () => {
       const coursesCollection = collection(db, 'courses');
-      const q = query(coursesCollection, where('teacherId', '==', teacherId));
+      const q = query(coursesCollection, where('userId', '==', teacherId));
       const querySnapshot = await getDocs(q);
 
       const coursesData = querySnapshot.docs.map(doc => ({

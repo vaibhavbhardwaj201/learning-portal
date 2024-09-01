@@ -7,7 +7,7 @@ export const storeUserData = async (user, formData) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${await user.getIdToken()}`, // Ensure the latest token is used
+        Authorization: `Bearer ${await user.getIdToken()}`,
       },
       body: JSON.stringify({ ...formData, phone: fullPhoneNumber }),
     });
